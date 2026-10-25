@@ -1,0 +1,630 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#090909">
+<title>For Rishi 🖤 | Birthday Surprise</title>
+
+<style>
+:root {
+  --bg: #090909;
+  --text: #f4f1eb;
+  --muted: #aaa6a0;
+  --line: #2a2927;
+  --accent: #d9ff63;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.65;
+  overflow-x: hidden;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: .2;
+  background: radial-gradient(ellipse at 50% 0%, #454545, transparent 55%);
+}
+
+button { font: inherit; cursor: pointer; }
+
+.wrap {
+  width: min(920px, calc(100% - 36px));
+  margin: auto;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: .22em;
+  font-size: .72rem;
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.hero {
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 70px 0;
+  position: relative;
+  isolation: isolate;
+}
+
+.hero::before {
+  content: "";
+  position: absolute;
+  width: min(76vw, 650px);
+  aspect-ratio: 1;
+  border: 1px solid #292929;
+  border-radius: 50%;
+  z-index: -1;
+  box-shadow: 0 0 0 55px #ffffff03,
+              0 0 0 110px #ffffff02;
+}
+
+.hero-content { max-width: 760px; }
+
+.hero h1 {
+  font-size: clamp(3rem, 10vw, 7rem);
+  line-height: .98;
+  letter-spacing: -.075em;
+  margin: 22px 0;
+}
+
+.hero h1 span { color: var(--accent); }
+
+.hero p {
+  color: var(--muted);
+  max-width: 560px;
+  margin: 0 auto 30px;
+  font-size: 1.1rem;
+}
+
+.btn {
+  border: 0;
+  border-radius: 999px;
+  padding: 14px 22px;
+  background: var(--accent);
+  color: #111;
+  font-weight: 850;
+  transition: transform .2s, filter .2s;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.07);
+}
+
+.scroll-note {
+  position: absolute;
+  bottom: 24px;
+  color: #777;
+  font-size: .76rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+}
+
+section { padding: 90px 0; }
+.section-head { margin-bottom: 32px; }
+
+h2 {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  letter-spacing: -.055em;
+  line-height: 1.05;
+  margin: 12px 0;
+}
+
+.lead {
+  color: var(--muted);
+  max-width: 650px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.card {
+  background: linear-gradient(145deg, #151515, #0d0d0d);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 25px;
+  min-height: 180px;
+}
+
+.card .icon { font-size: 1.8rem; }
+.card h3 { margin: 12px 0 7px; }
+.card p { margin: 0; color: var(--muted); }
+
+.quote {
+  border-left: 3px solid var(--accent);
+  padding: 8px 0 8px 22px;
+  margin: 32px 0 0;
+  font-size: clamp(1.25rem, 3vw, 2rem);
+  font-weight: 750;
+  letter-spacing: -.03em;
+}
+
+.manifesto {
+  background: #101010;
+  border-block: 1px solid #242424;
+}
+
+.manifesto-box {
+  padding: clamp(28px, 6vw, 58px);
+  border: 1px solid #343434;
+  border-radius: 28px;
+  background: linear-gradient(135deg, #171717, #0b0b0b);
+}
+
+.manifesto h2 { max-width: 700px; }
+
+.rules {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+  margin-top: 30px;
+}
+
+.rule {
+  border-top: 1px solid #3a3a3a;
+  padding-top: 15px;
+}
+
+.rule strong { display: block; font-size: 1.1rem; }
+.rule span { color: var(--muted); font-size: .92rem; }
+.seta { color: var(--accent); }
+
+.reveal-section { text-align: center; }
+
+.envelope {
+  max-width: 650px;
+  margin: auto;
+  border: 1px solid #383838;
+  background: linear-gradient(145deg, #151515, #0a0a0a);
+  border-radius: 28px;
+  padding: clamp(28px, 6vw, 60px);
+}
+
+.lock { font-size: 2.3rem; }
+
+.hidden-message {
+  display: none;
+  text-align: left;
+  margin-top: 28px;
+  animation: rise .8s ease both;
+}
+
+.hidden-message.show { display: block; }
+
+.hidden-message p {
+  color: #d0cdc7;
+  font-size: 1.06rem;
+}
+
+.signature {
+  margin-top: 26px;
+  color: var(--accent);
+  font-weight: 850;
+  font-size: 1.2rem;
+}
+
+footer {
+  text-align: center;
+  padding: 30px 18px 48px;
+  color: #777;
+  font-size: .85rem;
+}
+
+.tiny {
+  font-size: .82rem;
+  color: #777;
+  margin-top: 18px;
+}
+
+.progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background: var(--accent);
+  z-index: 10;
+}
+
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 22px;
+  transform: translate(-50%, 20px);
+  opacity: 0;
+  background: #f4f1eb;
+  color: #111;
+  padding: 11px 18px;
+  border-radius: 99px;
+  font-size: .9rem;
+  font-weight: 750;
+  transition: .3s;
+  z-index: 20;
+  pointer-events: none;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translate(-50%, 0);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes rise {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 650px) {
+  .grid, .rules { grid-template-columns: 1fr; }
+  section { padding: 66px 0; }
+  .card { min-height: unset; }
+  .hero::before { width: 85vw; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="progress" id="progress"></div>
+
+<header class="hero">
+  <div class="wrap hero-content">
+    <div class="eyebrow">A very serious announcement</div>
+
+    <h1>HEY, <span>RISHI.</span></h1>
+
+    <p>
+      Rishkeshi, aka Rishi — today is your birthday.
+      So, for once, this website is not about me being
+      the main character.
+    </p>
+
+    <button class="btn" id="startBtn">
+      Open your birthday surprise ↗
+    </button>
+
+    <div class="tiny">
+      Warning: contains 12% roasting and an unreasonable
+      amount of brotherhood.
+    </div>
+  </div>
+
+  <div class="scroll-note">Scroll when you're ready ↓</div>
+</header>
+
+<main id="main">
+
+  <section class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Chapter 01 · The official roast</div>
+
+      <h2>Another year older.<br>Still not wiser.</h2>
+
+      <p class="lead">
+        Happy Birthday, Rishi! 🎂 You've levelled up again.
+        Your age is increasing, your responsibilities are
+        increasing… and somehow your ability to reply on
+        time is still buffering.
+      </p>
+    </div>
+
+    <div class="grid">
+      <article class="card reveal">
+        <div class="icon">🫡</div>
+        <h3>Certified menace</h3>
+        <p>
+          You are proof that a person can be a walking
+          headache and still be someone people are genuinely
+          grateful for.
+        </p>
+      </article>
+
+      <article class="card reveal">
+        <div class="icon">🎮</div>
+        <h3>Character development</h3>
+        <p>
+          New age unlocked. Same nonsense installed.
+          But seriously, I hope this year brings you
+          more wins than excuses.
+        </p>
+      </article>
+
+      <article class="card reveal">
+        <div class="icon">📚</div>
+        <h3>Academic comeback loading…</h3>
+        <p>
+          Bro, study hard. We are not letting the textbooks
+          win this season. Your comeback arc starts now.
+        </p>
+      </article>
+    </div>
+
+    <blockquote class="quote reveal">
+      “Jokes aside, you're one of those people who make
+      life feel a little less heavy.”
+    </blockquote>
+  </section>
+
+  <section class="manifesto">
+    <div class="wrap">
+      <div class="manifesto-box reveal">
+        <div class="eyebrow">Chapter 02 · The mission</div>
+
+        <h2>
+          Study hard. Train hard.<br>
+          <span class="seta">Come to Set A.</span>
+        </h2>
+
+        <p class="lead">
+          This is your official reminder from your unpaid
+          life coach (me): let's work on ourselves, stay
+          disciplined, and make the future version of us proud.
+        </p>
+
+        <div class="rules">
+          <div class="rule">
+            <strong>01 / Study</strong>
+            <span>Focus now. Thank yourself later.</span>
+          </div>
+
+          <div class="rule">
+            <strong>02 / Train</strong>
+            <span>Show up consistently. Build strength and confidence.</span>
+          </div>
+
+          <div class="rule">
+            <strong>03 / Set A</strong>
+            <span>Stop making excuses and come already. 😂</span>
+          </div>
+        </div>
+
+        <p class="tiny">
+          No need to be perfect. Just keep moving forward —
+          one day at a time.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="section-head reveal">
+      <div class="eyebrow">Chapter 03 · No jokes for a second</div>
+
+      <h2>I'm genuinely glad<br>life gave me you.</h2>
+
+      <p class="lead">
+        Some friendships slowly become family. You don't
+        always need a big speech or perfect advice —
+        sometimes just having someone sit beside you is enough.
+      </p>
+    </div>
+
+    <div class="grid">
+      <article class="card reveal">
+        <div class="icon">🖤</div>
+        <h3>Thank you for staying</h3>
+        <p>
+          Thank you for sitting with me during my hard times.
+          You might not even realise how much that meant
+          to me, but I do.
+        </p>
+      </article>
+
+      <article class="card reveal">
+        <div class="icon">🤝</div>
+        <h3>More than a friend</h3>
+        <p>
+          Rishi, you're like a brother to me — someone I
+          can laugh with, learn from, and count among the
+          people who matter.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="wrap reveal-section">
+    <div class="eyebrow">Final chapter · One last thing</div>
+
+    <h2>Okay, enough scrolling.<br>One final message.</h2>
+
+    <p class="lead" style="margin:0 auto 28px">
+      You've survived the roast. You've reached the emotional
+      part. Tap below to unlock the message I actually
+      wanted you to read.
+    </p>
+
+    <div class="envelope">
+      <div class="lock" id="lockIcon">🔒</div>
+
+      <h3 id="revealTitle">A message for Rishi</h3>
+
+      <p class="lead" style="margin-inline:auto">
+        Not a meme. Not a roast. Just something real.
+      </p>
+
+      <button class="btn" id="revealBtn">
+        Unlock the message 🖤
+      </button>
+
+      <div class="hidden-message" id="hiddenMessage" aria-live="polite">
+        <p>Happy Birthday, Rishi. ❤️</p>
+
+        <p>
+          I just want you to know that I'm genuinely grateful
+          to have you in my life. Rishkeshi, you're not just
+          a friend to me — you're like a brother. Thank you
+          for sitting beside me during my hard times and
+          being there when I needed someone. Even if you
+          didn't realise it, those moments meant a lot to me.
+        </p>
+
+        <p>
+          You're also one of the people who motivate me to
+          work out, push myself, and become better. I hope
+          we keep motivating each other, working hard,
+          laughing at the most random things, and making
+          memories we'll talk about for years.
+        </p>
+
+        <p>
+          And listen carefully, birthday boy:
+          <strong>study hard and come to Set A.</strong>
+          😂🔥 We've got things to achieve, and I want to see
+          us both doing well. No disappearing, no giving up
+          on ourselves, and absolutely no becoming strangers
+          after all this.
+        </p>
+
+        <p>
+          I don't know what the future has planned, but I hope
+          our friendship stays strong through all of it.
+          Thank you for being part of my life. I never wanna
+          lose you, bro. I'll always be grateful for you and
+          the times you've stood by me.
+        </p>
+
+        <p>
+          Keep growing. Keep training. Keep being yourself.
+          And please, for once, make a birthday wish that
+          doesn't involve being lazy tomorrow. 💀
+        </p>
+
+        <div class="signature">
+          Happy Birthday, Rishi — my brother, always.
+          Always grateful. 🖤
+        </div>
+      </div>
+    </div>
+
+    <p class="tiny">
+      Made with respect, gratitude, and just enough
+      roasting to keep it normal.
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  <div>For my brother, not by blood. 🖤</div>
+  <div>Some people are friends. Some people become family.</div>
+</footer>
+
+<div class="toast" id="toast" role="status">
+  Birthday mode activated. 🎉
+</div>
+
+<script>
+const startBtn = document.getElementById("startBtn");
+const main = document.getElementById("main");
+const revealBtn = document.getElementById("revealBtn");
+const hiddenMessage = document.getElementById("hiddenMessage");
+const lockIcon = document.getElementById("lockIcon");
+const revealTitle = document.getElementById("revealTitle");
+const toast = document.getElementById("toast");
+
+let toastTimer;
+
+startBtn.addEventListener("click", () => {
+  main.scrollIntoView({ behavior: "smooth" });
+
+  toast.classList.add("show");
+  clearTimeout(toastTimer);
+
+  toastTimer = setTimeout(() => {
+    toast.classList.remove("show");
+  }, 2400);
+});
+
+revealBtn.addEventListener("click", () => {
+  const isOpen = hiddenMessage.classList.toggle("show");
+
+  lockIcon.textContent = isOpen ? "🔓" : "🔒";
+
+  revealTitle.textContent = isOpen
+    ? "From my heart, Rishi."
+    : "A message for Rishi";
+
+  revealBtn.textContent = isOpen
+    ? "Lock the message again"
+    : "Unlock the message 🖤";
+
+  if (isOpen) {
+    hiddenMessage.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest"
+    });
+  }
+});
+
+const progress = document.getElementById("progress");
+
+function updateProgress() {
+  const max =
+    document.documentElement.scrollHeight - window.innerHeight;
+
+  progress.style.width =
+    (max > 0 ? (window.scrollY / max) * 100 : 0) + "%";
+}
+
+window.addEventListener("scroll", updateProgress, {
+  passive: true
+});
+
+updateProgress();
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+
+document.querySelectorAll(".reveal").forEach(element => {
+  observer.observe(element);
+});
+</script>
+
+</body>
+</html>
